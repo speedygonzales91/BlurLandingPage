@@ -1,0 +1,142 @@
+body {
+  background-color: rgba(0, 0, 0, 0.9);
+  margin: 0;
+  color: #fff;
+  font-family: Arial;
+  min-width: 100%;
+  min-height: 100%;
+}
+
+.showcase::after { /*No need to add a separate div to manage a content, no DOM change*/
+  content: '';
+  height: 100vh;
+  width:100%;
+  background-image: url("images/background.jpeg");
+  display: block;
+  background-size: cover; /*Always show actual size*/
+  background-position: center; /*Position to center*/
+  background-repeat: no-repeat;  /*No repetition in display*/
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+  transition: all 1.2s;
+}
+
+.showcase:hover::after {
+  filter: blur(0px);
+  -webkit-filter: blur(0px);
+}
+
+.showcase:hover .content {
+  filter: blur(2px);
+  -webkit-filter: blur(2px);
+}
+
+.content {
+  position: absolute;
+  z-index: 1;
+  top: 10%;
+  left: 50%;
+  margin-top: 100px;
+  margin-left: -145px;
+  width: 300px;
+  height: 350px;
+  text-align: center;
+  transition: all 1s
+}
+
+.content .logo{
+  height: 180px;
+}
+
+.content .title{
+  font-size: 2.2rem;
+  margin-top: 1rem;
+}
+
+.content .text{
+  line-height: 1.7;
+  margin-top: 1rem;
+}
+
+.container {
+  max-width: 90%;
+  margin: auto;
+  overflow: hidden;
+  padding: 4rem 1rem;
+}
+
+.grid-3 {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(3, 1fr);
+}
+
+.grid-2 {
+  display: grid;
+  grid-gap: 20px;
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.center {
+  text-align: center;
+  margin: auto;
+}
+
+.bg-light {
+  background-color: #f4f4f4;
+  color: #333;
+}
+
+.bg-dark {
+  background-color: #333;
+  color: #f4f4f4;
+}
+
+/*FOOTER*/
+
+footer p {
+  margin: 0;
+  padding: 20px;
+}
+
+
+/*MEDIA*/
+@media (max-width:560px) {
+  .showcase::after {
+    height: 50vh;
+  }
+
+  .content {
+    margin-top: 5px;
+    top: 5%;
+  }
+
+  .content .logo {
+    height: 100px;
+  }
+
+  .content .text {
+    display: none;
+  }
+
+  .grid-3 {
+    grid-template-columns: 1fr;
+  }
+
+  .grid-2 {
+    grid-template-columns: 1fr;
+  }
+
+  .services div {
+    border-bottom: 1px #333 dashed;
+    padding: 1.2rem;
+  }
+}
+
+/*LANDSCAPE*/
+@media (max-height: 500px) {
+  .content .title,
+  .content .text {
+    display: none;
+  }
+}
